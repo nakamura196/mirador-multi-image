@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Mirador Scroll Demo</title>
+    <style>
+      #mirador {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mirador"></div>
+    <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+    <script type="text/javascript">
+      const config = {
+        id: "mirador",
+        windows: [
+          {
+            manifestId: "./manifest.json",
+          },
+        ],
+        language: "ja",
+        window: {
+          sideBarOpenByDefault: true,
+          defaultSideBarPanel: "info",
+          defaultView: "scroll",
+          views: [{ key: "single" }, { key: "gallery" }, { key: "scroll" }],
+        },
+      };
+
+      Mirador.viewer(config);
+    </script>
+  </body>
+</html>
