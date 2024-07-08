@@ -21,17 +21,25 @@
     <div id="mirador"></div>
     <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
     <script type="text/javascript">
+      var params = new URL(document.location).searchParams;
+      var manifest =
+        params.get("iiif-content") ||
+        params.get("manifest") ||
+        "./manifest.json";
+
+      const language = params.get("lang") || "ja";
+
+      var windows = [];
+      if (manifest) {
+        windows.push({ manifestId: manifest });
+      }
+
       const config = {
         id: "mirador",
-        windows: [
-          {
-            manifestId: "./manifest.json",
-          },
-        ],
-        language: "ja",
+        windows,
+        language,
         window: {
           sideBarOpenByDefault: true,
-          defaultSideBarPanel: "info",
           defaultView: "scroll",
           views: [{ key: "single" }, { key: "gallery" }, { key: "scroll" }],
         },
